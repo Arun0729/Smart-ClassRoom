@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartclassroom.controller.FacultyDashboardController"
+            stylesheets="@../css/style.css"
+            prefWidth="1100" prefHeight="700">
+
+    <!-- SIDEBAR (LEFT) -->
+    <left>
+        <VBox styleClass="sidebar" minWidth="220">
+
+            <!-- Sidebar Header -->
+            <VBox styleClass="sidebar-header" spacing="6">
+                <padding><Insets top="20" right="16" bottom="20" left="16"/></padding>
+                <Label text="🎓 Smart Classroom" styleClass="sidebar-app-title"/>
+                <Label fx:id="userNameLabel" text="Faculty Name" styleClass="sidebar-user-name"/>
+                <Label fx:id="deptLabel"     text="Department"   styleClass="sidebar-user-role"/>
+            </VBox>
+
+            <Separator styleClass="nav-divider"/>
+
+            <!-- Navigation Buttons -->
+            <VBox spacing="4">
+                <padding><Insets top="12" right="8" bottom="8" left="8"/></padding>
+                <Button fx:id="btnDashboard"   text="📊 Dashboard"         styleClass="nav-btn" maxWidth="Infinity" onAction="#showHome"/>
+                <Button fx:id="btnAttendance"  text="📋 Attendance"        styleClass="nav-btn" maxWidth="Infinity" onAction="#showAttendance"/>
+                <Button fx:id="btnAssignments" text="📝 Assignments"        styleClass="nav-btn" maxWidth="Infinity" onAction="#showAssignments"/>
+                <Button fx:id="btnSubmissions" text="📂 Submissions"        styleClass="nav-btn" maxWidth="Infinity" onAction="#showSubmissions"/>
+                <Button fx:id="btnReports"     text="📈 Reports"            styleClass="nav-btn" maxWidth="Infinity" onAction="#showReports"/>
+            </VBox>
+
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Separator/>
+
+            <!-- Logout -->
+            <VBox>
+                <padding><Insets top="8" right="8" bottom="16" left="8"/></padding>
+                <Button fx:id="btnLogout" text="⬅ Logout"
+                        styleClass="nav-btn-logout" maxWidth="Infinity"
+                        onAction="#handleLogout"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- CONTENT AREA (CENTER) -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+
+            <!-- Default Home View -->
+            <VBox fx:id="dashboardHome" spacing="20">
+                <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+                <Label text="Faculty Dashboard" styleClass="page-title"/>
+
+                <Label text="Welcome! Use the sidebar to mark attendance, manage assignments, and view reports."
+                       styleClass="status-info" wrapText="true"/>
+
+                <!-- Stat Cards -->
+                <HBox spacing="16">
+                    <VBox styleClass="stat-card stat-card-blue" alignment="CENTER" spacing="8">
+                        <padding><Insets top="20" right="30" bottom="20" left="30"/></padding>
+                        <Label fx:id="subjectCountLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Assigned Subjects" styleClass="stat-card-label"/>
+                    </VBox>
+                </HBox>
+
+                <Label text="Use the sidebar to mark attendance, manage assignments, and view reports."
+                       styleClass="status-info" wrapText="true"/>
+
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.AssignmentManagementController"
+      stylesheets="@../css/style.css"
+      spacing="16" styleClass="content-area">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Assignment Management" styleClass="page-title"/>
+
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+        <!-- Assignment Table -->
+        <TableView fx:id="assignmentTable" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colTitle"     text="Title"     prefWidth="200"/>
+                <TableColumn fx:id="colSubject"   text="Subject"   prefWidth="130"/>
+                <TableColumn fx:id="colDeadline"  text="Deadline"  prefWidth="160"/>
+                <TableColumn fx:id="colMaxMarks"  text="Max Marks" prefWidth="90"/>
+            </columns>
+        </TableView>
+
+        <!-- Form Panel -->
+        <VBox styleClass="panel" minWidth="320" spacing="12">
+            <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+            <Label text="Assignment Details" styleClass="panel-title"/>
+            <Label fx:id="statusLabel" wrapText="true"/>
+
+            <GridPane hgap="8" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="110" prefWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Title -->
+                <Label text="Title" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="titleField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Subject -->
+                <Label text="Subject" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="subjectComboBox" maxWidth="Infinity"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Description -->
+                <Label text="Description" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextArea fx:id="descriptionArea" prefHeight="80"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <!-- Deadline Date -->
+                <Label text="Deadline Date" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="deadlineDatePicker" maxWidth="Infinity"
+                            GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Deadline Time -->
+                <Label text="Deadline Time" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="deadlineTimeField"
+                           promptText="HH:MM (e.g. 23:59)"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+                <!-- Max Marks -->
+                <Label text="Max Marks" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="maxMarksField"
+                           promptText="e.g. 100"
+                           GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <!-- Buttons -->
+            <HBox spacing="8">
+                <Button fx:id="btnCreate" text="Create" styleClass="btn-success"   onAction="#handleCreate"/>
+                <Button fx:id="btnUpdate" text="Update" styleClass="btn-primary"   onAction="#handleUpdate"/>
+                <Button fx:id="btnDelete" text="Delete" styleClass="btn-danger"    onAction="#handleDelete"/>
+                <Button fx:id="btnClear"  text="Clear"  styleClass="btn-secondary" onAction="#handleClear"/>
+            </HBox>
+
+        </VBox>
+    </HBox>
+
+</VBox>

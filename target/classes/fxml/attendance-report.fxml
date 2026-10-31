@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.AttendanceReportController"
+      stylesheets="@../css/style.css"
+      spacing="16" styleClass="content-area">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Attendance Reports" styleClass="page-title"/>
+
+    <!-- Report Type Panel -->
+    <VBox styleClass="panel" spacing="12">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+        <Label text="Report Type" styleClass="panel-title"/>
+
+        <!-- Toggle Group declared here for reference in RadioButtons -->
+        <fx:define>
+            <ToggleGroup fx:id="reportTypeGroup"/>
+        </fx:define>
+
+        <HBox spacing="20">
+            <RadioButton fx:id="rbSubjectReport"
+                         text="Subject Attendance Report"
+                         toggleGroup="$reportTypeGroup"
+                         selected="true"/>
+            <RadioButton fx:id="rbLowAttendance"
+                         text="Low Attendance Alert"
+                         toggleGroup="$reportTypeGroup"/>
+        </HBox>
+
+        <!-- Controls -->
+        <HBox spacing="16" alignment="CENTER_LEFT">
+            <Label text="Subject:" styleClass="form-label"/>
+            <ComboBox fx:id="subjectComboBox" prefWidth="200"/>
+
+            <Label text="Class:" styleClass="form-label"/>
+            <ComboBox fx:id="classComboBox" prefWidth="180" visible="false"/>
+
+            <Label text="Threshold %:" styleClass="form-label"/>
+            <Spinner fx:id="thresholdSpinner" prefWidth="90" visible="false"/>
+
+            <Button fx:id="btnGenerateReport" text="Generate"
+                    styleClass="btn-primary" onAction="#handleGenerateReport"/>
+        </HBox>
+
+    </VBox>
+
+    <Label fx:id="reportTypeLabel" styleClass="status-info" wrapText="true"/>
+    <Label fx:id="statusLabel" wrapText="true"/>
+
+    <!-- Report Table -->
+    <TableView fx:id="reportTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colRepStudentName" text="Student Name"  prefWidth="220"/>
+            <TableColumn fx:id="colRepPresent"     text="Present"       prefWidth="80"/>
+            <TableColumn fx:id="colRepTotal"       text="Total"         prefWidth="80"/>
+            <TableColumn fx:id="colRepPercent"     text="Attendance %"  prefWidth="120"/>
+        </columns>
+    </TableView>
+
+</VBox>

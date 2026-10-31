@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.StudentAssignmentsController"
+      stylesheets="@../css/style.css"
+      styleClass="content-area"
+      spacing="16">
+
+    <!-- Header -->
+    <VBox spacing="4">
+        <Label text="My Assignments" styleClass="page-title"/>
+        <Label text="View assignment tasks, track evaluation feedback, and submit your work." styleClass="page-subtitle"/>
+    </VBox>
+
+    <!-- Filter Bar -->
+    <HBox styleClass="panel" spacing="16" alignment="CENTER_LEFT">
+        <Label text="Select Subject:" styleClass="form-label"/>
+        <ComboBox fx:id="subjectComboBox" prefWidth="280" promptText="Select a Subject"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" visible="false"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+        <!-- Assignment List Table -->
+        <VBox HBox.hgrow="ALWAYS" spacing="8">
+            <TableView fx:id="assignmentTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colTitle" text="Assignment" prefWidth="220"/>
+                    <TableColumn fx:id="colDeadline" text="Deadline" prefWidth="160"/>
+                    <TableColumn fx:id="colMaxMarks" text="Max Marks" prefWidth="90"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="130"/>
+                </columns>
+                <placeholder>
+                    <Label text="No assignments found for this subject."/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+        <!-- Details & Submission Panel -->
+        <VBox styleClass="panel" minWidth="340" prefWidth="360" spacing="12">
+            <Label text="Assignment Details" styleClass="panel-title"/>
+
+            <VBox spacing="4">
+                <Label fx:id="selectedTitleLabel" styleClass="panel-title" wrapText="true" style="-fx-font-size: 14px;"/>
+                <Label fx:id="selectedDescLabel" wrapText="true" styleClass="status-info"/>
+            </VBox>
+
+            <HBox spacing="16">
+                <Label fx:id="selectedDeadlineLabel" style="-fx-font-size: 12px; -fx-text-fill: #546E7A;"/>
+                <Label fx:id="selectedMaxMarksLabel" style="-fx-font-size: 12px; -fx-text-fill: #546E7A;"/>
+            </HBox>
+
+            <Label fx:id="selectedStatusLabel" styleClass="status-info" style="-fx-font-weight: bold;"/>
+
+            <Separator/>
+
+            <!-- Grades & Feedback -->
+            <Label text="Grading &amp; Feedback" styleClass="form-label"/>
+            <VBox spacing="4" style="-fx-background-color: #F8FAFC; -fx-padding: 10; -fx-background-radius: 6; -fx-border-color: #E2E8F0; -fx-border-radius: 6;">
+                <Label fx:id="marksLabel" text="Marks: -"/>
+                <Label fx:id="feedbackLabel" text="Feedback: -" wrapText="true" style="-fx-text-fill: #546E7A; -fx-font-size: 12px;"/>
+            </VBox>
+
+            <Separator/>
+
+            <!-- File Upload & Submission -->
+            <Label text="Submit Solution" styleClass="form-label"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="btnSelectFile" text="📁 Select File" styleClass="btn-secondary" onAction="#handleSelectFile"/>
+                <Label fx:id="selectedFileLabel" text="No file selected" wrapText="true" style="-fx-font-size: 11px; -fx-text-fill: #546E7A;"/>
+            </HBox>
+
+            <Label text="Allowed formats: .pdf, .doc, .docx, .zip, .txt, .java" style="-fx-font-size: 10px; -fx-text-fill: #9E9E9E;"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="btnSubmit" text="🚀 Submit Assignment" styleClass="btn-success" onAction="#handleSubmit" maxWidth="Infinity"/>
+        </VBox>
+
+    </HBox>
+
+</VBox>
+

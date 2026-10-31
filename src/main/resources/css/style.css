@@ -1,0 +1,440 @@
+/* ============================================================
+   Smart Classroom Management System – Global Stylesheet
+   Color Palette:
+     Sidebar:     #1A237E  (deep indigo)
+     Accent:      #0288D1  (sky blue)
+     Background:  #F0F4F8  (light grey-blue)
+     Surface:     #FFFFFF  (white cards)
+     Success:     #2E7D32
+     Error:       #C62828
+     Warning:     #E65100
+     Text-primary:  #212121
+     Text-muted:    #757575
+   ============================================================ */
+
+/* ── ROOT ─────────────────────────────────────────────── */
+.root {
+    -fx-background-color: #F0F4F8;
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #212121;
+}
+
+/* ── LOGIN SCREEN ─────────────────────────────────────── */
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #1A237E, #0288D1);
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 4);
+    -fx-padding: 40 50 40 50;
+    -fx-max-width: 420;
+    -fx-max-height: 480;
+}
+
+.login-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A237E;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #757575;
+}
+
+/* ── SIDEBAR ──────────────────────────────────────────── */
+.sidebar {
+    -fx-background-color: #1A237E;
+    -fx-min-width: 230px;
+    -fx-pref-width: 230px;
+    -fx-max-width: 230px;
+    -fx-padding: 0;
+}
+
+.sidebar-header {
+    -fx-background-color: #111B60;
+    -fx-padding: 24 20 24 20;
+}
+
+.sidebar-app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-wrap-text: true;
+}
+
+.sidebar-user-name {
+    -fx-text-fill: #90CAF9;
+    -fx-font-size: 12px;
+    -fx-padding: 4 0 0 0;
+}
+
+.sidebar-user-role {
+    -fx-text-fill: #64B5F6;
+    -fx-font-size: 11px;
+}
+
+.nav-divider {
+    -fx-background-color: rgba(255,255,255,0.12);
+    -fx-pref-height: 1;
+    -fx-min-height: 1;
+}
+
+/* Navigation buttons */
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #B0BEC5;
+    -fx-font-size: 13px;
+    -fx-pref-width: 230px;
+    -fx-pref-height: 44px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 16 0 24;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-btn-active {
+    -fx-background-color: #0288D1;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-btn-logout {
+    -fx-background-color: transparent;
+    -fx-text-fill: #EF9A9A;
+    -fx-font-size: 13px;
+    -fx-pref-width: 230px;
+    -fx-pref-height: 44px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 16 0 24;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+
+.nav-btn-logout:hover {
+    -fx-background-color: rgba(239,154,154,0.15);
+    -fx-text-fill: #FF5252;
+}
+
+/* ── MAIN CONTENT AREA ────────────────────────────────── */
+.content-area {
+    -fx-background-color: #F0F4F8;
+    -fx-padding: 24;
+}
+
+.page-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A237E;
+}
+
+.page-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #757575;
+}
+
+/* ── STAT CARDS (Dashboard) ───────────────────────────── */
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);
+    -fx-padding: 20 24 20 24;
+    -fx-min-width: 160;
+    -fx-pref-width: 200;
+}
+
+.stat-card-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0288D1;
+}
+
+.stat-card-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #757575;
+    -fx-padding: 4 0 0 0;
+}
+
+.stat-card-blue   { -fx-border-color: #0288D1; -fx-border-width: 0 0 0 4; -fx-border-radius: 0; }
+.stat-card-green  { -fx-border-color: #2E7D32; -fx-border-width: 0 0 0 4; }
+.stat-card-orange { -fx-border-color: #E65100; -fx-border-width: 0 0 0 4; }
+.stat-card-purple { -fx-border-color: #6A1B9A; -fx-border-width: 0 0 0 4; }
+
+/* ── SECTION PANEL (Card wrapper for forms/tables) ────── */
+.panel {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.07), 8, 0, 0, 2);
+    -fx-padding: 20;
+}
+
+.panel-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A237E;
+    -fx-padding: 0 0 12 0;
+}
+
+/* ── FORM FIELDS ──────────────────────────────────────── */
+.form-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #546E7A;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 2 0;
+}
+
+.text-field, .text-area, .password-field, .combo-box, .date-picker {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-border-width: 1;
+    -fx-padding: 8 12 8 12;
+    -fx-font-size: 13px;
+    -fx-pref-height: 36px;
+}
+
+.text-field:focused, .text-area:focused, .password-field:focused,
+.combo-box:focused, .date-picker:focused {
+    -fx-border-color: #0288D1;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(2,136,209,0.2), 6, 0, 0, 0);
+}
+
+.text-area {
+    -fx-pref-height: 80px;
+    -fx-padding: 8;
+}
+
+/* ── BUTTONS ──────────────────────────────────────────── */
+.btn-primary {
+    -fx-background-color: #0288D1;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.btn-primary:hover { -fx-background-color: #0277BD; }
+.btn-primary:pressed { -fx-background-color: #01579B; }
+
+.btn-success {
+    -fx-background-color: #2E7D32;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.btn-success:hover { -fx-background-color: #1B5E20; }
+
+.btn-warning {
+    -fx-background-color: #E65100;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.btn-warning:hover { -fx-background-color: #BF360C; }
+
+.btn-danger {
+    -fx-background-color: #C62828;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.btn-danger:hover { -fx-background-color: #B71C1C; }
+
+.btn-secondary {
+    -fx-background-color: #ECEFF1;
+    -fx-text-fill: #546E7A;
+    -fx-font-size: 13px;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20 8 20;
+    -fx-cursor: hand;
+    -fx-pref-height: 36px;
+}
+
+.btn-secondary:hover { -fx-background-color: #CFD8DC; }
+
+/* ── TABLE VIEW ───────────────────────────────────────── */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #E3E8EE;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+    -fx-selection-bar: #E3F2FD;
+    -fx-selection-bar-text: #000000;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E8EAF6;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: #E8EAF6;
+    -fx-border-color: transparent;
+    -fx-size: 40px;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A237E;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-cell-size: 38px;
+    -fx-border-color: transparent transparent #F5F5F5 transparent;
+}
+
+.table-row-cell:odd  { -fx-background-color: #FAFAFA; }
+.table-row-cell:even { -fx-background-color: white; }
+.table-row-cell:selected {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #000000;
+}
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #000000;
+}
+.table-row-cell:selected .text {
+    -fx-fill: #000000;
+}
+.table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #000000;
+}
+.table-row-cell:hover {
+    -fx-background-color: #E8F5E9;
+}
+
+/* ── STATUS / FEEDBACK LABELS ─────────────────────────── */
+.status-success {
+    -fx-text-fill: #2E7D32;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.status-error {
+    -fx-text-fill: #C62828;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.status-info {
+    -fx-text-fill: #0277BD;
+    -fx-font-size: 12px;
+}
+
+/* ── ATTENDANCE BADGES ────────────────────────────────── */
+.badge-present {
+    -fx-background-color: #C8E6C9;
+    -fx-text-fill: #1B5E20;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-absent {
+    -fx-background-color: #FFCDD2;
+    -fx-text-fill: #B71C1C;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* Assignment status badges */
+.badge-pending    { -fx-background-color: #FFF9C4; -fx-text-fill: #F57F17; -fx-background-radius: 20; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold; }
+.badge-submitted  { -fx-background-color: #C8E6C9; -fx-text-fill: #1B5E20; -fx-background-radius: 20; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold; }
+.badge-overdue    { -fx-background-color: #FFCDD2; -fx-text-fill: #B71C1C; -fx-background-radius: 20; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold; }
+.badge-evaluated  { -fx-background-color: #BBDEFB; -fx-text-fill: #0D47A1; -fx-background-radius: 20; -fx-padding: 3 10 3 10; -fx-font-size: 11px; -fx-font-weight: bold; }
+
+/* ── ATTENDANCE % CARDS (Student Dashboard) ───────────── */
+.attendance-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-padding: 16 20 16 20;
+    -fx-min-width: 200;
+}
+
+.attendance-card-subject {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A237E;
+}
+
+.attendance-card-pct {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.pct-good    { -fx-text-fill: #2E7D32; }
+.pct-warning { -fx-text-fill: #E65100; }
+.pct-danger  { -fx-text-fill: #C62828; }
+
+/* ── SEARCH BAR ───────────────────────────────────────── */
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-border-width: 1;
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 13px;
+    -fx-pref-height: 36px;
+    -fx-pref-width: 260px;
+}
+
+.search-field:focused {
+    -fx-border-color: #0288D1;
+    -fx-effect: dropshadow(gaussian, rgba(2,136,209,0.2), 6, 0, 0, 0);
+}
+
+/* ── SEPARATOR ────────────────────────────────────────── */
+.separator .line {
+    -fx-border-color: #E0E0E0;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ── SPINNER ──────────────────────────────────────────── */
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #CFD8DC;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-pref-height: 36px;
+}
+
+/* ── SCROLL BAR ───────────────────────────────────────── */
+.scroll-bar:vertical .track { -fx-background-color: #F5F5F5; }
+.scroll-bar:vertical .thumb { -fx-background-color: #B0BEC5; -fx-background-radius: 6; }
+.scroll-bar:vertical .thumb:hover { -fx-background-color: #90A4AE; }
+

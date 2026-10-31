@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.smartclassroom.controller.LoginController"
+           styleClass="login-root"
+           stylesheets="@../css/style.css"
+           prefWidth="1000" prefHeight="650">
+
+    <VBox styleClass="login-card"
+          spacing="16"
+          alignment="CENTER"
+          maxWidth="400">
+
+        <!-- App Title -->
+        <Label fx:id="appTitleLabel"
+               text="🎓 Smart Classroom"
+               styleClass="login-title"/>
+
+        <Label text="Management System"
+               styleClass="login-subtitle"/>
+
+        <Separator/>
+
+        <!-- Username -->
+        <Label text="Username" styleClass="form-label"/>
+        <TextField fx:id="usernameField"
+                   promptText="Enter username"
+                   styleClass="form-field"/>
+
+        <!-- Password -->
+        <Label text="Password" styleClass="form-label"/>
+        <PasswordField fx:id="passwordField"
+                       promptText="Enter password"
+                       styleClass="form-field"/>
+
+        <!-- Login Button -->
+        <Button fx:id="loginButton"
+                text="Login"
+                styleClass="btn-primary"
+                onAction="#handleLogin"
+                maxWidth="Infinity"/>
+
+        <!-- Error Label -->
+        <Label fx:id="errorLabel"
+               styleClass="status-error"
+               wrapText="true"
+               visible="false"/>
+
+        <!-- Loading Indicator -->
+        <ProgressIndicator fx:id="loadingIndicator"
+                           visible="false"
+                           maxWidth="30"
+                           maxHeight="30"/>
+
+    </VBox>
+</StackPane>

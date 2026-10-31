@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.SubmissionsController"
+      stylesheets="@../css/style.css"
+      styleClass="content-area"
+      spacing="16">
+
+    <!-- Screen Header -->
+    <VBox spacing="4">
+        <Label text="Submission Evaluation" styleClass="page-title"/>
+        <Label text="Review student submissions and assign marks with constructive feedback." styleClass="page-subtitle"/>
+    </VBox>
+
+    <!-- Top Selection Panel -->
+    <HBox styleClass="panel" spacing="16" alignment="CENTER_LEFT">
+        <Label text="Select Assignment:" styleClass="form-label"/>
+        <ComboBox fx:id="assignmentComboBox" prefWidth="300" promptText="Select an Assignment"/>
+        <Button fx:id="btnLoadSubmissions" text="🔄 Refresh" styleClass="btn-primary" onAction="#handleLoadSubmissions"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="assignmentInfoLabel" styleClass="status-info"/>
+    </HBox>
+
+    <!-- Summary Count -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label fx:id="submissionCountLabel" styleClass="status-info"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="statusLabel" visible="false"/>
+    </HBox>
+
+    <!-- Main Content: Submissions Table on Left, Evaluation Form on Right -->
+    <HBox spacing="16" VBox.vgrow="ALWAYS">
+
+        <!-- Table View -->
+        <VBox HBox.hgrow="ALWAYS" spacing="8">
+            <TableView fx:id="submissionsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colStudent" text="Student" prefWidth="200"/>
+                    <TableColumn fx:id="colSubmittedAt" text="Submitted At" prefWidth="150"/>
+                    <TableColumn fx:id="colEvalStatus" text="Status" prefWidth="110"/>
+                    <TableColumn fx:id="colMarks" text="Marks" prefWidth="90"/>
+                </columns>
+                <placeholder>
+                    <Label text="No submissions found for this assignment."/>
+                </placeholder>
+            </TableView>
+        </VBox>
+
+        <!-- Evaluation Panel -->
+        <VBox styleClass="panel" minWidth="320" prefWidth="340" spacing="12">
+            <Label text="Evaluate Submission" styleClass="panel-title"/>
+
+            <VBox spacing="4">
+                <Label text="Student:" styleClass="form-label"/>
+                <Label fx:id="selectedStudentLabel" text="None selected" styleClass="status-info"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Submitted File:" styleClass="form-label"/>
+                <Label fx:id="filePathLabel" text="N/A" wrapText="true" style="-fx-font-size: 11px; -fx-text-fill: #546E7A;"/>
+            </VBox>
+
+            <Separator/>
+
+            <VBox spacing="4">
+                <Label text="Marks:" styleClass="form-label"/>
+                <TextField fx:id="marksField" promptText="e.g. 85.0"/>
+            </VBox>
+
+            <VBox spacing="4">
+                <Label text="Feedback:" styleClass="form-label"/>
+                <TextArea fx:id="feedbackArea" promptText="Enter feedback for student..." prefHeight="130" wrapText="true"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Button fx:id="btnEvaluate" text="✓ Submit Evaluation" styleClass="btn-success" onAction="#handleEvaluate" maxWidth="Infinity"/>
+        </VBox>
+
+    </HBox>
+
+</VBox>
+

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.AttendanceController"
+      stylesheets="@../css/style.css"
+      spacing="16" styleClass="content-area">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Mark Attendance" styleClass="page-title"/>
+
+    <!-- Subject + Date + Load Button -->
+    <HBox styleClass="panel" spacing="16" alignment="CENTER_LEFT">
+        <padding><Insets top="12" right="16" bottom="12" left="16"/></padding>
+
+        <Label text="Subject:" styleClass="form-label"/>
+        <ComboBox fx:id="subjectComboBox" prefWidth="200"/>
+
+        <Label text="Date:" styleClass="form-label"/>
+        <DatePicker fx:id="datePicker" prefWidth="160"/>
+
+        <Button fx:id="btnLoadStudents" text="Load Students"
+                styleClass="btn-primary" onAction="#handleLoadStudents"/>
+    </HBox>
+
+    <!-- Record Count + Mark All Present -->
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label fx:id="recordCountLabel" styleClass="status-info"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnMarkAllPresent" text="✓ Mark All Present"
+                styleClass="btn-secondary" onAction="#handleMarkAllPresent"/>
+    </HBox>
+
+    <!-- Attendance Table -->
+    <TableView fx:id="attendanceTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colStudentName" text="Student Name" prefWidth="300"/>
+            <TableColumn fx:id="colStatus"      text="Status"       prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <!-- Save Row -->
+    <HBox spacing="8" alignment="CENTER_RIGHT">
+        <Label fx:id="statusLabel" wrapText="true"/>
+        <Button fx:id="btnSaveAttendance" text="💾 Save Attendance"
+                styleClass="btn-success" onAction="#handleSaveAttendance"/>
+    </HBox>
+
+</VBox>

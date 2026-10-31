@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartclassroom.controller.AdminDashboardController"
+            stylesheets="@../css/style.css"
+            prefWidth="1100" prefHeight="700">
+
+    <!-- SIDEBAR (LEFT) -->
+    <left>
+        <VBox styleClass="sidebar" minWidth="220">
+
+            <!-- Sidebar Header -->
+            <VBox styleClass="sidebar-header" spacing="6">
+                <padding><Insets top="20" right="16" bottom="20" left="16"/></padding>
+                <Label text="🎓 Smart Classroom" styleClass="sidebar-app-title"/>
+                <Label fx:id="userNameLabel" text="Username" styleClass="sidebar-user-name"/>
+                <Label fx:id="userRoleLabel" text="Administrator" styleClass="sidebar-user-role"/>
+            </VBox>
+
+            <Separator styleClass="nav-divider"/>
+
+            <!-- Navigation Buttons -->
+            <VBox spacing="4">
+                <padding><Insets top="12" right="8" bottom="8" left="8"/></padding>
+                <Button fx:id="btnDashboard" text="📊 Dashboard"
+                        styleClass="nav-btn" maxWidth="Infinity"
+                        onAction="#showHome"/>
+                <Button fx:id="btnStudents" text="👥 Students"
+                        styleClass="nav-btn" maxWidth="Infinity"
+                        onAction="#showStudents"/>
+                <Button fx:id="btnFaculty" text="👨‍🏫 Faculty"
+                        styleClass="nav-btn" maxWidth="Infinity"
+                        onAction="#showFaculty"/>
+                <Button fx:id="btnClasses" text="🏛️ Classes &amp; Subjects"
+                        styleClass="nav-btn" maxWidth="Infinity"
+                        onAction="#showClasses"/>
+            </VBox>
+
+            <!-- Spacer -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Separator/>
+
+            <!-- Logout -->
+            <VBox>
+                <padding><Insets top="8" right="8" bottom="16" left="8"/></padding>
+                <Button fx:id="btnLogout" text="⬅ Logout"
+                        styleClass="nav-btn-logout" maxWidth="Infinity"
+                        onAction="#handleLogout"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- CONTENT AREA (CENTER) -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+
+            <!-- Default Home View -->
+            <VBox fx:id="dashboardHome" spacing="20">
+                <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+                <Label text="Admin Dashboard" styleClass="page-title"/>
+
+                <!-- Stat Cards -->
+                <HBox spacing="16">
+                    <!-- Students -->
+                    <VBox styleClass="stat-card stat-card-blue" alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label fx:id="totalStudentsLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Total Students" styleClass="stat-card-label"/>
+                    </VBox>
+                    <!-- Faculty -->
+                    <VBox styleClass="stat-card stat-card-green" alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label fx:id="totalFacultyLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Total Faculty" styleClass="stat-card-label"/>
+                    </VBox>
+                    <!-- Classes -->
+                    <VBox styleClass="stat-card stat-card-orange" alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label fx:id="totalClassesLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Total Classes" styleClass="stat-card-label"/>
+                    </VBox>
+                    <!-- Subjects -->
+                    <VBox styleClass="stat-card stat-card-purple" alignment="CENTER" spacing="8" HBox.hgrow="ALWAYS">
+                        <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                        <Label fx:id="totalSubjectsLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Total Subjects" styleClass="stat-card-label"/>
+                    </VBox>
+                </HBox>
+
+                <Label text="Navigate using the sidebar to manage students, faculty, classes and subjects."
+                       styleClass="status-info" wrapText="true"/>
+
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

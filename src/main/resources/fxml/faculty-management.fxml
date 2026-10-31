@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?>
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.smartclassroom.controller.FacultyManagementController"
+      stylesheets="@../css/style.css"
+      spacing="16" styleClass="content-area">
+
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <!-- Header -->
+    <Label text="Faculty Management" styleClass="page-title"/>
+
+    <!-- Status Label -->
+    <Label fx:id="statusLabel" wrapText="true"/>
+
+    <!-- Four Action Buttons -->
+    <HBox spacing="12">
+        <Button fx:id="btnShowAdd"    text="➕  Add Faculty"    styleClass="btn-success"   onAction="#handleShowAdd"    prefWidth="170" prefHeight="44"/>
+        <Button fx:id="btnShowEdit"   text="✏️  Edit Faculty"   styleClass="btn-primary"   onAction="#handleShowEdit"   prefWidth="170" prefHeight="44"/>
+        <Button fx:id="btnShowDelete" text="🚫  Deactivate Faculty" styleClass="btn-danger" onAction="#handleShowDelete" prefWidth="190" prefHeight="44"/>
+        <Button fx:id="btnShowView"   text="👁️  View Faculty"  styleClass="btn-secondary" onAction="#handleShowView"   prefWidth="170" prefHeight="44"/>
+    </HBox>
+
+    <!-- ═══════════════════════════════════════════════
+         PANEL 1 – ADD FACULTY FORM
+         ═══════════════════════════════════════════════ -->
+    <VBox fx:id="addPanel" styleClass="panel" spacing="14" VBox.vgrow="ALWAYS" visible="false" managed="false">
+        <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+        <Label text="Add New Faculty Member" styleClass="panel-title"/>
+
+        <GridPane hgap="12" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints minWidth="120" prefWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+                <ColumnConstraints minWidth="120" prefWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <!-- Row 0 -->
+            <Label text="Employee ID *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="addEmployeeIdField" promptText="e.g. FAC003" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Full Name *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="addFullNameField" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+            <!-- Row 1 -->
+            <Label text="Username *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="addUsernameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Email *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="addEmailField" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+            <!-- Row 2 -->
+            <Label text="Phone" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="addPhoneField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Password *" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <PasswordField fx:id="addPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+            <!-- Row 3 -->
+            <Label text="Department" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="addDepartmentField" promptText="e.g. Computer Science" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button text="💾  Save Faculty" styleClass="btn-success" onAction="#handleAdd" prefHeight="36"/>
+            <Button text="✖  Cancel" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+        </HBox>
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════
+         PANEL 2 – EDIT FACULTY
+         ═══════════════════════════════════════════════ -->
+    <VBox fx:id="editPanel" styleClass="panel" spacing="14" VBox.vgrow="ALWAYS" visible="false" managed="false">
+        <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+        <Label text="Edit Faculty Member" styleClass="panel-title"/>
+
+        <!-- Lookup row -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Employee / Faculty ID:" styleClass="form-label"/>
+            <TextField fx:id="editLookupField" promptText="Enter employee ID, faculty ID, or username" prefWidth="280"/>
+            <Button text="🔍  Find" styleClass="btn-primary" onAction="#handleFindForEdit" prefHeight="36"/>
+        </HBox>
+
+        <!-- Edit form (hidden until faculty found) -->
+        <VBox fx:id="editFormSection" spacing="12" visible="false" managed="false">
+            <GridPane hgap="12" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" prefWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                    <ColumnConstraints minWidth="120" prefWidth="120"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <!-- Row 0 -->
+                <Label text="Employee ID *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="editEmployeeIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Full Name *" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                <TextField fx:id="editFullNameField" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <!-- Row 1 -->
+                <Label text="Username *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="editUsernameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Email *" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <TextField fx:id="editEmailField" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <!-- Row 2 -->
+                <Label text="Phone" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="editPhoneField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Department" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                <TextField fx:id="editDepartmentField" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="✔  Update Faculty" styleClass="btn-primary" onAction="#handleUpdate" prefHeight="36"/>
+                <Button text="✖  Cancel" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+            </HBox>
+        </VBox>
+
+        <!-- Cancel button always visible in edit panel -->
+        <HBox fx:id="editCancelRow" spacing="10">
+            <Button text="✖  Cancel" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+        </HBox>
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════
+         PANEL 3 – DEACTIVATE FACULTY
+         ═══════════════════════════════════════════════ -->
+    <VBox fx:id="deletePanel" styleClass="panel" spacing="14" visible="false" managed="false">
+        <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+        <Label text="Deactivate Faculty Member" styleClass="panel-title"/>
+
+        <!-- Lookup row -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Employee / Faculty ID:" styleClass="form-label"/>
+            <TextField fx:id="deleteLookupField" promptText="Enter employee ID, faculty ID, or username" prefWidth="280"/>
+            <Button text="🔍  Find" styleClass="btn-primary" onAction="#handleFindForDelete" prefHeight="36"/>
+        </HBox>
+
+        <!-- Confirmation section -->
+        <VBox fx:id="deleteConfirmSection" spacing="12" visible="false" managed="false">
+            <Label fx:id="deleteFacultyInfoLabel" wrapText="true" styleClass="status-info"/>
+            <HBox spacing="10">
+                <Button text="🚫  Confirm Deactivate" styleClass="btn-danger" onAction="#handleConfirmDeactivate" prefHeight="36"/>
+                <Button text="✖  Cancel" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+            </HBox>
+        </VBox>
+
+        <HBox fx:id="deleteCancelRow" spacing="10">
+            <Button text="✖  Cancel" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+        </HBox>
+    </VBox>
+
+    <!-- ═══════════════════════════════════════════════
+         PANEL 4 – VIEW ALL FACULTY TABLE
+         ═══════════════════════════════════════════════ -->
+    <VBox fx:id="viewPanel" styleClass="panel" spacing="10" VBox.vgrow="ALWAYS" visible="false" managed="false">
+        <padding><Insets top="16" right="20" bottom="16" left="20"/></padding>
+
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="All Faculty Members" styleClass="panel-title" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="searchField" styleClass="search-field" promptText="🔍 Search..." prefWidth="220"/>
+            <Button text="Search" styleClass="btn-primary" onAction="#handleSearch" prefHeight="36"/>
+            <Button text="Refresh" styleClass="btn-secondary" onAction="#handleRefresh" prefHeight="36"/>
+        </HBox>
+
+        <TableView fx:id="facultyTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colEmployeeId" text="Emp ID"     prefWidth="90"/>
+                <TableColumn fx:id="colFacultyId"  text="ID"         prefWidth="50"/>
+                <TableColumn fx:id="colName"       text="Full Name"  prefWidth="160"/>
+                <TableColumn fx:id="colUsername"   text="Username"   prefWidth="110"/>
+                <TableColumn fx:id="colEmail"      text="Email"      prefWidth="180"/>
+                <TableColumn fx:id="colPhone"      text="Phone"      prefWidth="110"/>
+                <TableColumn fx:id="colDept"       text="Department" prefWidth="150"/>
+                <TableColumn fx:id="colStatus"     text="Status"     prefWidth="80"/>
+            </columns>
+            <placeholder><Label text="No faculty found."/></placeholder>
+        </TableView>
+
+        <HBox spacing="10">
+            <Button text="✖  Close" styleClass="btn-secondary" onAction="#handleCancel" prefHeight="36"/>
+        </HBox>
+    </VBox>
+
+</VBox>

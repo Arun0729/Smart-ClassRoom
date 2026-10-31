@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.smartclassroom.controller.StudentDashboardController"
+            stylesheets="@../css/style.css"
+            prefWidth="1100.0"
+            prefHeight="700.0">
+
+    <!-- Left Sidebar -->
+    <left>
+        <VBox styleClass="sidebar">
+
+            <!-- App & User Header -->
+            <VBox styleClass="sidebar-header" spacing="4">
+                <Label text="🎓 Smart Classroom" styleClass="sidebar-app-title"/>
+                <Label fx:id="userNameLabel" text="Student Name" styleClass="sidebar-user-name"/>
+                <Label fx:id="classLabel" text="Class: N/A" styleClass="sidebar-user-role"/>
+                <Label fx:id="userRoleLabel" text="Student" styleClass="sidebar-user-role"/>
+            </VBox>
+
+            <Region styleClass="nav-divider"/>
+
+            <!-- Navigation Buttons -->
+            <Button fx:id="btnDashboard"
+                    text="📊 Dashboard"
+                    styleClass="nav-btn"
+                    onAction="#showHome"/>
+
+            <Button fx:id="btnViewAttendance"
+                    text="📅 My Attendance"
+                    styleClass="nav-btn"
+                    onAction="#showAttendance"/>
+
+            <Button fx:id="btnAssignments"
+                    text="📝 My Assignments"
+                    styleClass="nav-btn"
+                    onAction="#showAssignments"/>
+
+            <!-- Push Logout to Bottom -->
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Region styleClass="nav-divider"/>
+
+            <Button fx:id="btnLogout"
+                    text="⬅ Logout"
+                    styleClass="nav-btn-logout"
+                    onAction="#handleLogout"/>
+
+        </VBox>
+    </left>
+
+    <!-- Center Content Area -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+
+            <!-- Default Home View -->
+            <VBox fx:id="dashboardHome" spacing="20">
+
+                <VBox spacing="4">
+                    <Label text="Student Dashboard" styleClass="page-title"/>
+                    <Label text="Monitor your subject attendance and track upcoming assignments." styleClass="page-subtitle"/>
+                </VBox>
+
+                <!-- Stat Cards -->
+                <HBox spacing="16">
+                    <VBox styleClass="stat-card stat-card-blue">
+                        <Label fx:id="totalSubjectsLabel" text="0" styleClass="stat-card-value"/>
+                        <Label text="Enrolled Subjects" styleClass="stat-card-label"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card stat-card-green">
+                        <Label fx:id="overallAttendanceLabel" text="0.0%" styleClass="stat-card-value"/>
+                        <Label text="Average Attendance" styleClass="stat-card-label"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Attendance Cards Section -->
+                <VBox spacing="12" VBox.vgrow="ALWAYS">
+                    <Label text="Subject Attendance Breakdown" styleClass="panel-title"/>
+                    <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">
+                        <content>
+                            <FlowPane fx:id="attendanceSummaryBox" hgap="16" vgap="16">
+                                <padding>
+                                    <Insets top="4" right="4" bottom="16" left="4"/>
+                                </padding>
+                            </FlowPane>
+                        </content>
+                    </ScrollPane>
+                </VBox>
+
+            </VBox>
+
+        </StackPane>
+    </center>
+
+</BorderPane>
+
